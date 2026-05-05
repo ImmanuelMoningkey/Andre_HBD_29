@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>Happy Birthday Andre! 🎉</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --yellow: #FFD600;
+            --orange: #FF6D00;
+            --pink: #FF4081;
+            --purple: #7C4DFF;
+            --blue: #00B0FF;
+            --green: #00E676;
+            --bg: #0D0D1A;
+            --card-bg: #16162A;
+            --text: #FFFFFF;
+            --radius: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Nunito', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* === CONFETTI CANVAS === */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* === MAIN WRAPPER === */
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 16px 60px;
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            text-align: center;
+            padding: 48px 16px 32px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            color: #fff;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .hero-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(42px, 13vw, 72px);
+            line-height: 1;
+            background: linear-gradient(135deg, var(--yellow) 0%, var(--orange) 30%, var(--pink) 60%, var(--purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 0 30px rgba(255, 109, 0, 0.4));
+        }
+
+        .hero-name {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(28px, 9vw, 48px);
+            color: var(--yellow);
+            text-shadow: 0 0 20px rgba(255, 214, 0, 0.6);
+            margin-bottom: 16px;
+        }
+
+        .hero-age {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--card-bg);
+            border: 2px solid rgba(255, 214, 0, 0.3);
+            border-radius: 50px;
+            padding: 8px 24px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--yellow);
+            margin-bottom: 20px;
+        }
+
+        .hero-msg {
+            font-size: 15px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            max-width: 320px;
+            margin: 0 auto 8px;
+        }
+
+        .hero-late {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            font-style: italic;
+        }
+
+        /* === DIVIDER === */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 32px 0;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+        }
+
+        .divider-emoji {
+            font-size: 20px;
+        }
+
+        /* === GACHA SECTION === */
+        .gacha-section {
+            text-align: center;
+        }
+
+        .gacha-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 28px;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .gacha-subtitle {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 28px;
+            font-weight: 600;
+        }
+
+        /* === POKEBALL BUTTON === */
+        .pokeball-container {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 28px;
+            cursor: pointer;
+        }
+
+        .pokeball {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid #1A1A2E;
+            box-shadow:
+                0 0 0 3px rgba(255, 255, 255, 0.08),
+                0 8px 32px rgba(0, 0, 0, 0.5),
+                0 0 60px rgba(255, 109, 0, 0.2);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .pokeball:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 0 0 3px rgba(255, 255, 255, 0.15),
+                0 12px 40px rgba(0, 0, 0, 0.6),
+                0 0 80px rgba(255, 109, 0, 0.35);
+        }
+
+        .pokeball:active {
+            transform: scale(0.97);
+        }
+
+        .pokeball-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(135deg, #FF3D00, #FF6D00);
+        }
+
+        .pokeball-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(135deg, #E0E0E0, #FFFFFF);
+        }
+
+        .pokeball-band {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 10px;
+            transform: translateY(-50%);
+            background: #1A1A2E;
+            z-index: 2;
+        }
+
+        .pokeball-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #fff;
+            border: 5px solid #1A1A2E;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pokeball-button::after {
+            content: '';
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fff, #E0E0E0);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+        }
+
+        .pokeball-glow {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid transparent;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .pokeball-tap-hint {
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* === POKEBALL ANIMATIONS === */
+        .pokeball.shaking {
+            animation: pokeshake 0.12s ease-in-out infinite;
+        }
+
+        @keyframes pokeshake {
+
+            0%,
+            100% {
+                transform: rotate(-8deg) scale(1.02);
+            }
+
+            50% {
+                transform: rotate(8deg) scale(1.02);
+            }
+        }
+
+        .pokeball.opening {
+            animation: pokeopen 0.6s ease-out forwards;
+        }
+
+        @keyframes pokeopen {
+            0% {
+                transform: scale(1);
+            }
+
+            30% {
+                transform: scale(1.2) rotate(10deg);
+                box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3), 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 120px rgba(255, 255, 255, 0.6);
+            }
+
+            60% {
+                transform: scale(0.5) rotate(-5deg);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(0) rotate(20deg);
+                opacity: 0;
+            }
+        }
+
+        /* === FLASH OVERLAY === */
+        .flash-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 100;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.1s;
+        }
+
+        .flash-overlay.active {
+            opacity: 1;
+        }
+
+        /* === RESULT CARD === */
+        .result-section {
+            display: none;
+            animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .result-section.show {
+            display: block;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .result-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .result-rarity-bar {
+            height: 6px;
+            width: 100%;
+        }
+
+        .result-image-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: #0a0a14;
+        }
+
+        .result-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        .result-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to top, var(--card-bg), transparent);
+        }
+
+        .result-rarity-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .result-info {
+            padding: 20px;
+        }
+
+        .result-name {
+            font-family: 'Fredoka One', cursive;
+            font-size: 26px;
+            color: var(--text);
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .result-desc {
+            font-size: 15px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.65;
+            margin-bottom: 20px;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-roll-again {
+            flex: 1;
+            padding: 14px;
+            border-radius: 14px;
+            border: none;
+            background: linear-gradient(135deg, var(--orange), var(--pink));
+            color: #fff;
+            font-family: 'Nunito', sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 4px 20px rgba(255, 109, 0, 0.4);
+        }
+
+        .btn-roll-again:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(255, 109, 0, 0.5);
+        }
+
+        .btn-roll-again:active {
+            transform: translateY(0);
+        }
+
+        /* === COLLECTION TRACKER === */
+        .collection-tracker {
+            margin-top: 28px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .tracker-title {
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 14px;
+        }
+
+        .tracker-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+        }
+
+        .tracker-item {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            position: relative;
+            border: 1.5px solid transparent;
+        }
+
+        .tracker-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            opacity: 0.25;
+            filter: grayscale(100%);
+            transition: all 0.4s;
+        }
+
+        .tracker-item.unlocked img {
+            opacity: 1;
+            filter: none;
+        }
+
+        .tracker-item.unlocked {
+            border-color: rgba(255, 214, 0, 0.4);
+        }
+
+        .tracker-count {
+            margin-top: 14px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .tracker-count span {
+            color: var(--yellow);
+        }
+
+        /* === STARS PARTICLES === */
+        .star {
+            position: fixed;
+            pointer-events: none;
+            z-index: 200;
+            font-size: 24px;
+            animation: starFly 1.2s ease-out forwards;
+        }
+
+        @keyframes starFly {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+
+            100% {
+                opacity: 0;
+                transform: var(--fly-to) scale(0) rotate(720deg);
+            }
+        }
+
+        /* === FOOTER === */
+        .footer {
+            text-align: center;
+            padding: 40px 0 0;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="confetti-canvas"></canvas>
+    <div class="flash-overlay" id="flashOverlay"></div>
+
+    <div class="wrapper">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-badge">🎂 4 Mei 2026</div>
+            <h1 class="hero-title">Happy<br>Birthday!</h1>
+            <div class="hero-name">Andre 🎉</div>
+            <div class="hero-age">
+                <span>🎈</span>
+                <span>29 Tahun</span>
+                <span>🎈</span>
+            </div>
+            <p class="hero-msg">
+                Selamat ulang tahun yang ke 29 bosqu<br>
+                Semoga bisa selalu bahagia, banya doi, dapa cewe, dan sehat selalu
+            </p>
+            </p>
+            <p class="hero-late">(smo kpla 3 nih anjay)</p>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="divider">
+            <div class="divider-line"></div>
+            <span class="divider-emoji">⭐</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- GACHA SECTION -->
+        <section class="gacha-section" id="gachaSection">
+            <h2 class="gacha-title">✨ Andre Gacha ✨</h2>
+            <p class="gacha-subtitle">Gaskan ambe surprise Andre ini for jadi koleksi</p>
+
+            <div class="pokeball-container" id="pokeballContainer" onclick="doGacha()">
+                <div class="pokeball" id="pokeball">
+                    <div class="pokeball-top"></div>
+                    <div class="pokeball-bottom"></div>
+                    <div class="pokeball-band"></div>
+                    <div class="pokeball-button"></div>
+                </div>
+            </div>
+
+            <p class="pokeball-tap-hint" id="tapHint">Tap Pokeball!</p>
+
+            <!-- RESULT -->
+            <div class="result-section" id="resultSection">
+                <div class="result-card" id="resultCard">
+                    <div class="result-rarity-bar" id="rarityBar"></div>
+                    <div class="result-image-container">
+                        <img id="resultImg" src="" alt="" />
+                        <div class="result-image-overlay"></div>
+                        <div class="result-rarity-badge" id="rarityBadge"></div>
+                    </div>
+                    <div class="result-info">
+                        <div class="result-name" id="resultName"></div>
+                        <p class="result-desc" id="resultDesc"></p>
+                        <div class="result-actions">
+                            <button class="btn-roll-again" onclick="resetGacha()">🎰 Gacha Lagi!</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLLECTION -->
+                <div class="collection-tracker" id="collectionTracker">
+                    <div class="tracker-title">📦 Koleksi Andre</div>
+                    <div class="tracker-grid" id="trackerGrid"></div>
+                    <div class="tracker-count" id="trackerCount"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">So boleh kaweng bro</div>
+    </div>
+
+    <script src="assets/js/andre-data.js"></script>
+    <script>
+        // =================== STATE ===================
+        let isRolling = false;
+        const unlockedIds = new Set(JSON.parse(localStorage.getItem('andre_unlocked') || '[]'));
+
+        // =================== CONFETTI ===================
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let confettiPieces = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        function spawnConfetti(count = 60) {
+            const colors = ['#FFD600', '#FF6D00', '#FF4081', '#7C4DFF', '#00B0FF', '#00E676'];
+            for (let i = 0; i < count; i++) {
+                confettiPieces.push({
+                    x: Math.random() * canvas.width,
+                    y: -10,
+                    w: 8 + Math.random() * 8,
+                    h: 5 + Math.random() * 5,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    vx: (Math.random() - 0.5) * 4,
+                    vy: 2 + Math.random() * 4,
+                    rot: Math.random() * 360,
+                    rotV: (Math.random() - 0.5) * 8,
+                    life: 1
+                });
+            }
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confettiPieces = confettiPieces.filter(p => p.life > 0);
+            confettiPieces.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.rot += p.rotV;
+                p.vy += 0.07;
+                if (p.y > canvas.height + 20) { p.life = 0; return; }
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.rot * Math.PI / 180);
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = Math.min(p.life, 1);
+                ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                ctx.restore();
+            });
+            requestAnimationFrame(animateConfetti);
+        }
+        animateConfetti();
+
+        // Initial confetti on load
+        setTimeout(() => spawnConfetti(80), 300);
+
+        // =================== STAR BURST ===================
+        function burstStars(x, y) {
+            const emojis = ['⭐', '🌟', '✨', '💫', '🎉', '🎊'];
+            for (let i = 0; i < 8; i++) {
+                const el = document.createElement('div');
+                el.className = 'star';
+                el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                const angle = (i / 8) * 360;
+                const dist = 80 + Math.random() * 60;
+                const dx = Math.cos(angle * Math.PI / 180) * dist;
+                const dy = Math.sin(angle * Math.PI / 180) * dist;
+                el.style.left = x + 'px';
+                el.style.top = y + 'px';
+                el.style.setProperty('--fly-to', `translate(${dx}px, ${dy}px)`);
+                document.body.appendChild(el);
+                setTimeout(() => el.remove(), 1300);
+            }
+        }
+
+        // =================== GACHA LOGIC ===================
+        function doGacha() {
+            if (isRolling) return;
+            isRolling = true;
+
+            const pokeball = document.getElementById('pokeball');
+            const hint = document.getElementById('tapHint');
+            const container = document.getElementById('pokeballContainer');
+
+            // Hide hint
+            hint.style.opacity = '0';
+
+            // Shake
+            pokeball.classList.add('shaking');
+
+            // Get center of pokeball for burst
+            const rect = container.getBoundingClientRect();
+            const cx = rect.left + rect.width / 2;
+            const cy = rect.top + rect.height / 2;
+
+            setTimeout(() => {
+                pokeball.classList.remove('shaking');
+                pokeball.classList.add('opening');
+
+                // Flash
+                const flash = document.getElementById('flashOverlay');
+                flash.classList.add('active');
+                setTimeout(() => flash.classList.remove('active'), 200);
+
+                // Star burst
+                burstStars(cx, cy);
+
+                // Spawn result confetti
+                spawnConfetti(50);
+
+                // Roll
+                const result = rollGacha();
+                showResult(result);
+
+                setTimeout(() => {
+                    pokeball.classList.remove('opening');
+                    pokeball.style.display = 'none';
+                }, 600);
+
+            }, 1200);
+        }
+
+        function showResult(result) {
+            // Update unlocked
+            unlockedIds.add(result.id);
+            localStorage.setItem('andre_unlocked', JSON.stringify([...unlockedIds]));
+
+            const rarityInfo = RARITY_COLORS[result.rarity];
+
+            // Set image
+            const img = document.getElementById('resultImg');
+            img.src = result.selectedImage;
+            img.alt = result.name;
+
+            // Set rarity bar
+            const bar = document.getElementById('rarityBar');
+            bar.style.background = rarityInfo.bg;
+
+            // Set badge
+            const badge = document.getElementById('rarityBadge');
+            badge.textContent = rarityInfo.label;
+            badge.style.background = rarityInfo.bg;
+            badge.style.color = rarityInfo.text;
+
+            // Set name & desc
+            document.getElementById('resultName').textContent = result.name;
+            document.getElementById('resultDesc').textContent = result.description;
+
+            // Show section
+            const sec = document.getElementById('resultSection');
+            sec.classList.add('show');
+
+            // Build tracker
+            buildTracker();
+
+            // Scroll to result
+            setTimeout(() => {
+                sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 400);
+
+            // Legendary extra confetti
+            if (result.rarity === 'legendary') {
+                setTimeout(() => spawnConfetti(120), 200);
+                setTimeout(() => spawnConfetti(80), 600);
+            }
+        }
+
+        function resetGacha() {
+            isRolling = false;
+            const pokeball = document.getElementById('pokeball');
+            pokeball.style.display = '';
+            pokeball.className = 'pokeball';
+
+            document.getElementById('resultSection').classList.remove('show');
+            document.getElementById('tapHint').style.opacity = '';
+
+            // Scroll back to gacha
+            document.getElementById('gachaSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // =================== COLLECTION TRACKER ===================
+        function buildTracker() {
+            const grid = document.getElementById('trackerGrid');
+            grid.innerHTML = '';
+
+            ANDRE_COLLECTION.forEach(andre => {
+                const div = document.createElement('div');
+                div.className = 'tracker-item' + (unlockedIds.has(andre.id) ? ' unlocked' : '');
+
+                const img = document.createElement('img');
+                const firstImg = andre.images[0];
+                img.src = andre.folder ? `assets/img/${andre.folder}/${firstImg}` : `assets/img/${firstImg}`;
+                img.alt = andre.name;
+                img.loading = 'lazy';
+
+                div.appendChild(img);
+                grid.appendChild(div);
+            });
+
+            const count = document.getElementById('trackerCount');
+            count.innerHTML = `Terkumpul: <span>${unlockedIds.size}</span> / ${ANDRE_COLLECTION.length} Andre`;
+        }
+    </script>
+</body>
+
+</html>
