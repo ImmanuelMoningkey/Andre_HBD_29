@@ -5,7 +5,7 @@ const ANDRE_COLLECTION = [
     name: "Andre Si Ikan Darat",
     rarity: "rare",
     folder: "Andre_Berenang",
-    images: ["Andre_Berenang_1.jpg", "Andre_Berenang_2.jpg"],
+    images: ["Andre_Berenang_1.png", "Andre_Berenang_2.png"],
     description: "Andre ini ternyata bisa bernafas di dalam air coy. Keknya beliao ini keturunan Aquaman njay 🌊"
   },
   // === FOLDER: Andre_Cinta_Alam ===
@@ -14,7 +14,7 @@ const ANDRE_COLLECTION = [
     name: "Andre Penikmat Alam",
     rarity: "epic",
     folder: "Andre_Cinta_Alam",
-    images: ["Andre_Cinta_Alam_1.jpg", "Andre_Cinta_Alam_2.jpg", "Andre_Cinta_Alam_3.jpg", "Andre_Cinta_Alam_4.jpg", "Andre_Cinta_Alam_5.jpg"],
+    images: ["Andre_Cinta_Alam_1.jpg", "Andre_Cinta_Alam_2.jpg", "Andre_Cinta_Alam_3.jpeg", "Andre_Cinta_Alam_4.jpeg", "Andre_Cinta_Alam_5.jpeg"],
     description: "Bolang bet ye Andre yang satu ini, sdiki leh muncul di berita orang hilang dia ini"
   },
   // === FOLDER: Andre_Fotografi ===
@@ -23,7 +23,7 @@ const ANDRE_COLLECTION = [
     name: "Andre Fotografer",
     rarity: "rare",
     folder: "Andre_Fotografi",
-    images: ["Andre_Fotografi_1.jpg", "Andre_Fotografi_2.jpg"],
+    images: ["Andre_Fotografi_1.png", "Andre_Fotografi_2.png"],
     description: "Bae bae kalo bakubawa deng Andre yang satu ini, bisa jadi dia jepret pas torang smntra ta epret 📸"
   },
   // === FOLDER: Andre_Membaca ===
@@ -32,7 +32,7 @@ const ANDRE_COLLECTION = [
     name: "Andre Kutu Buku",
     rarity: "uncommon",
     folder: "Andre_Membaca",
-    images: ["Andre_Membaca_1.jpg", "Andre_Membaca_2.jpg", "Andre_Membaca_3.jpg"],
+    images: ["Andre_Membaca_1.jpg", "Andre_Membaca_2.jpg", "Andre_Membaca_3.png"],
     description: "Andre yang ini suka bet ba baca, lengkali so nda maso akal tu tampa mar bro tetap lanjut ba baca 📚"
   },
   // === FOLDER: Andre_Seniman ===
@@ -41,7 +41,7 @@ const ANDRE_COLLECTION = [
     name: "Andre Penikmat Seni",
     rarity: "epic",
     folder: "Andre_Seniman",
-    images: ["Andre_Seniman_1.jpg", "Andre_Seniman_2.jpg"],
+    images: ["Andre_Seniman_1.jpeg", "Andre_Seniman_2.jpeg"],
     description: "Andre yang ini kek dpa lia suka bet lukisan berbagai fandom ye, padahal satupun keknya dia nentau dpe asal dari franchise mana wkwkwk"
   },
   // === FOLDER: Andre_Split ===
@@ -50,7 +50,7 @@ const ANDRE_COLLECTION = [
     name: "Andre Fleksibel",
     rarity: "legendary",
     folder: "Andre_Split",
-    images: ["Andre_Split_1.jpg", "Andre_Split_2.jpg"],
+    images: ["Andre_Split_1.png", "Andre_Split_2.png"],
     description: "LANGKA SKLI COY! Andre ini walaupun so tua mar tetap boleh rata di bagian bawah. Atletis karu yah🤸"
   },
   // === FOLDER: Andre_Terbang ===
@@ -68,7 +68,7 @@ const ANDRE_COLLECTION = [
     name: "Andre Ayunan",
     rarity: "common",
     folder: null,
-    images: ["Andre_Ayunan.jpg"],
+    images: ["Andre_Ayunan.jpeg"],
     description: "Andre satu ini dpe masa kecil kurang bahagia. Di umur bgini mar masih suka main ayunan njay (kta juga suka sih hehe) 🎠"
   },
   {
@@ -76,7 +76,7 @@ const ANDRE_COLLECTION = [
     name: "Andre Billiard",
     rarity: "rare",
     folder: null,
-    images: ["Andre_Billiard.jpg"],
+    images: ["Andre_Billiard.jpeg"],
     description: "Beh, kapan lagi bisa dapat Andre yang satu ini. Andre billiard ini bisa jadi pertama dan terakhir kalinya main billiard! 🎱"
   },
   {
@@ -84,7 +84,7 @@ const ANDRE_COLLECTION = [
     name: "Andre Letoy",
     rarity: "common",
     folder: null,
-    images: ["Andre_Capek_Membaca.jpg"],
+    images: ["Andre_Capek_Membaca.jpeg"],
     description: "Awoh, Andre satu ini keknya so dapa mata bilolo karna so tlalu banya ba lia buku. Sapa suruh kua ba baca mar di ruangan gelap"
   },
   {
