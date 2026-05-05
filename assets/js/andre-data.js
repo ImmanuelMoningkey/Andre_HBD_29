@@ -213,7 +213,7 @@ const ANDRE_COLLECTION = [
     rarity: "common",
     folder: null,
     images: ["Andre_Penumpang.jpeg"],
-    description: "Andre satu ini user Bus sejati sih, sampe ja ba jalan lebih dari 1 km ma for mo pi bus stop tiap minggu"
+    description: "Andre satu ini user Bus sejati sih, sampe ja ba jalan lebih dari 1 km cma for mo pi bus stop tiap minggu"
   },
   {
     id: "Andre_Push_Up",
